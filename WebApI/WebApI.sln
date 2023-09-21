@@ -5,8 +5,6 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApI", "WebApI\WebApI.csproj", "{70273016-9249-4585-B3CA-7F5974852115}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E1DCD683-F269-4051-BF49-43F2CD6A52CC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

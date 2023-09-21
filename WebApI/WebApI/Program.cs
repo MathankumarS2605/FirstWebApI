@@ -21,3 +21,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+//Student student = new Student();
+
+//new Student { };
