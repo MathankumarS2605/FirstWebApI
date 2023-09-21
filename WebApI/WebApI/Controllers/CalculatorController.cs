@@ -11,26 +11,26 @@ namespace WebApI.Controllers
         [HttpGet("Add")]
         public int Add(int x,int y)
         {
-            return x + y+500;
+            return x + y ;
         }
 
         //api/Calculator/subtract? x = 100 & y = 15
         [HttpGet("Sub")]
         public int Sum(int x, int y)
         {
-            return x + y + 1000;
+            return x + y ;
         }
         // api/Calculator/Multiply?x=100&y=15
         [HttpGet("Mul")]
         public int Multiply(int x, int y)
         {
-            return x * y+899;
+            return x * y;
         }
         // api/Calculator/Division?x=100&y=15
         [HttpGet("Division")]
         public int Division(int x, int y)
         {
-            return x / y+6777;
+            return x / y;
         }
 
     }
