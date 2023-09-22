@@ -23,7 +23,7 @@ namespace WebApI.Controllers
         {
 
             // StringBuilder sb = new StringBuilder();
-            List<Employee> employee = repositoryEmployee.Employees1();
+            List<Employee> employee = repositoryEmployee.EmployeesList();
             var emplist = (from emp in employee
                            select new EmpViewModel()
                            {
@@ -41,10 +41,18 @@ namespace WebApI.Controllers
 
         [HttpGet("FindEmployee")]
 
-        public Employee FindEmployee(int id)
+        public EmpViewModel FindEmployee(int id)
         {
-            Employee employee=repositoryEmployee.GetEmployee(id);
-            return employee;
+            EmpViewModel employeeView = new EmpViewModel(); 
+            Employee emp=repositoryEmployee.FindEmployee(id);
+            employeeView.FirstName = emp.FirstName;
+            employeeView.LastName = emp.LastName;
+            employeeView.BirthDate = emp.BirthDate;
+            employeeView.HireDate = emp.HireDate;
+            employeeView.Title = emp.Title;
+            employeeView.City = emp.City;
+            employeeView.ReportTo = emp.ReportsTo;
+            return employeeView;
         }
         [HttpDelete("DeleteEmployee")]
         public int Delete(int id)
@@ -52,7 +60,7 @@ namespace WebApI.Controllers
             Employee employee;
             if (id > 0)
             {
-                employee = repositoryEmployee.GetEmployee(id);
+                employee = repositoryEmployee.FindEmployee(id);
                 return repositoryEmployee.DeleteId(employee); ;
             }
             return 0;
@@ -61,7 +69,8 @@ namespace WebApI.Controllers
 
         [HttpPost("ModifyEmployee")]
 
-        public int ModifyEmployee(EmpViewModel emp)
+
+        public int ModifyEmployee(int id ,EmpViewModel emp)
         {
 
             Employee employee = new Employee();
@@ -69,13 +78,23 @@ namespace WebApI.Controllers
             employee.LastName = emp.LastName;
             employee.BirthDate = emp.BirthDate;
             employee.HireDate = emp.HireDate;
-            employee.Title= emp.Title;  
+            employee.Title = emp.Title;
             employee.City = emp.City;
-            employee.ReportsTo=emp.ReportTo > 0 ? emp.ReportTo : null;
+            employee.ReportsTo = emp.ReportTo > 0 ? emp.ReportTo : null;
             // employee.EmployeeId
-        
-            repositoryEmployee.AddEmployee(employee);   
+
+            repositoryEmployee.AddEmployee(employee);
             return 1;
+        }
+        [HttpGet("GetAllEmployeeIds")]
+        public List<int> GetAllEmployeeIds()
+        {
+            List<int> ids =repositoryEmployee.GetEmployeeIds();
+            if(ids.Count <= 0)
+            {
+                throw new Exception("Not Avaible");
+            }
+            return ids; 
         }
 
         [HttpPut("AddEmployee")]

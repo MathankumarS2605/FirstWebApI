@@ -52,12 +52,12 @@ namespace WebApI.Models
          
         }
          
-        public List<Employee> Employees1()
+        public List<Employee> EmployeesList()
         {
            
             return Context.Employees.ToList();
         }
-        public Employee GetEmployee(int id)
+        public Employee FindEmployee(int id)
         {
             Employee employee = Context.Employees.Find(id);
             return employee;
