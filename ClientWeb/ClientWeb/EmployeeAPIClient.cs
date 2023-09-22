@@ -46,7 +46,7 @@ namespace ClientWeb
                     {
                         await Console.Out.WriteLineAsync($"{emp.EmpId},{emp.FirstName},{emp.LastName},{emp.Title},{emp.City},{emp.HireDate},{emp.BirthDate},{emp.ReportTo}");
                     }
-                    //await Console.Out.WriteLineAsync(x);
+                  
                 }
             }
 
