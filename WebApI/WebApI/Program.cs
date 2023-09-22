@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddDbContext<NorthwindContext>(o => o.UseSqlServer("name=NorthWind"));
+builder.Services.AddScoped<RepositoryEmployee>();
 
 var app = builder.Build();
 

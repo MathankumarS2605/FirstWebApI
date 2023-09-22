@@ -5,7 +5,13 @@ namespace WebApI.Models
 {
     public class RepositoryEmployee
     {
-        public NorthwindContext Context = new NorthwindContext();
+        private NorthwindContext Context;
+
+
+        public RepositoryEmployee(NorthwindContext context)
+        {
+            Context = context;
+        }
        
 
 

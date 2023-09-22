@@ -9,8 +9,13 @@ namespace WebApI.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        public static List<Employee> employeeList = new List<Employee>();
-        public static RepositoryEmployee repositoryEmployee = new RepositoryEmployee();
+            public static List<Employee> employeeList = new List<Employee>();
+            public static RepositoryEmployee repositoryEmployee;
+
+        public EmployeeController(RepositoryEmployee _repositoryEmployee)
+        {
+            repositoryEmployee = _repositoryEmployee;
+        }
 
 
         [HttpGet("GetEmployee")]
@@ -34,7 +39,14 @@ namespace WebApI.Controllers
             return emplist;
         }
 
-        [HttpDelete]
+        [HttpGet("FindEmployee")]
+
+        public Employee FindEmployee(int id)
+        {
+            Employee employee=repositoryEmployee.GetEmployee(id);
+            return employee;
+        }
+        [HttpDelete("DeleteEmployee")]
         public int Delete(int id)
         {
             Employee employee;
@@ -47,9 +59,9 @@ namespace WebApI.Controllers
            
         }
 
-        [HttpPost]
+        [HttpPost("ModifyEmployee")]
 
-        public int Post(EmpViewModel emp)
+        public int ModifyEmployee(EmpViewModel emp)
         {
 
             Employee employee = new Employee();
@@ -66,8 +78,8 @@ namespace WebApI.Controllers
             return 1;
         }
 
-        [HttpPut]
-        public int Put(EmpViewModel emp)
+        [HttpPut("AddEmployee")]
+        public int AddEmployee(EmpViewModel emp)
         {
             Employee employee = new Employee();
             employee.FirstName = emp.FirstName;
