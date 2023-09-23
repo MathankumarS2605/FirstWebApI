@@ -2,6 +2,5 @@
 using ClientWeb;
 
 Console.WriteLine("Hello, World!");
-EmployeeAPIClient.CallGetEmployee().Wait();
-EmployeeAPIClient.CallGetEmployeeObj().Wait();
+EmployeeAPIClient.DeleteTask().Wait();
 Console.ReadLine();

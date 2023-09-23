@@ -67,10 +67,9 @@ namespace WebApI.Controllers
            
         }
 
-        [HttpPost("ModifyEmployee")]
+        [HttpPost("AddEmployee")]
 
-
-        public int ModifyEmployee(int id ,EmpViewModel emp)
+        public int AddEmployee(int id ,EmpViewModel emp)
         {
 
             Employee employee = new Employee();
@@ -97,10 +96,11 @@ namespace WebApI.Controllers
             return ids; 
         }
 
-        [HttpPut("AddEmployee")]
-        public int AddEmployee(EmpViewModel emp)
+        [HttpPut("ModifyEmployee")]
+        public int ModifyEmploye(EmpViewModel emp)
         {
             Employee employee = new Employee();
+            employee.EmployeeId = emp.EmpId;
             employee.FirstName = emp.FirstName;
             employee.LastName = emp.LastName;
             employee.BirthDate = emp.BirthDate;

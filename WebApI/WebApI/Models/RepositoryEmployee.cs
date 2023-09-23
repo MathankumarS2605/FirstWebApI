@@ -15,17 +15,11 @@ namespace WebApI.Models
        
 
 
-        public int DeleteId(Employee emp)
+        public int DeleteId(Employee  emp)
         {
 
             EntityState es = Context.Entry(emp).State;
             Console.WriteLine($"EntityState B4 Delete:{es.GetDisplayName()}");
-            Context.Employees.Update(emp);
-            es = Context.Entry(emp).State;
-            Console.WriteLine($"EntityState B4 Delete:{es.GetDisplayName()}");
-            int result = Context.SaveChanges();
-            es = Context.Entry(emp).State;
-            Console.WriteLine($"EntityState B4 SaveChanges:{es.GetDisplayName()}");
             Context.Employees.Remove(emp);
             Context.SaveChanges();
 
@@ -79,7 +73,7 @@ namespace WebApI.Models
             {
                 EntityState es = Context.Entry(emp).State;
                 Console.WriteLine($"EntityState B4 Modified:{es.GetDisplayName()}");
-                Context.Employees.Update(emp);
+                Context.Entry(emp).State = EntityState.Modified;
                 es = Context.Entry(emp).State;
                 Console.WriteLine($"EntityState B4 Modified:{es.GetDisplayName()}");
                 int result = Context.SaveChanges();
